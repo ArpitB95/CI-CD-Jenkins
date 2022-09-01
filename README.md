@@ -14,18 +14,16 @@ It is an extension of continuous integration to make sure that you can release n
 ## Continuous Deployment: 
 It goes one step further than continuous delivery, with this practice, every change that passes all stages of your production pipeline is released to your customers, there is no human intervention, and only a failed test will prevent a new change to be deployed to production.
 
-## jenkins:
+## Jenkins:
 - It is a tool to implement the CICD pipeline. It automates the processes the developed software have to be gone through before production and the deployment to the pre-production/production environment.
 
-## Testing webhook
+![](Images/ci-cd.png)
 
 
 
-image.png
 
-CI-CD.png
 
-Steps:
+## Steps for setting up environment:
 - Create a new Repo on github
 - initialise that repo on local host by ssh
 - push app folder using ssh method to the git repo
@@ -62,6 +60,43 @@ Steps:
   - Go to settings option of that repo and on the left click on the deploy keys and click on the add deploy key
   - Then paste the public key and give the same name to the key and click on read and write permission
   - click add the key
+  
 
-image.png
+![](Images/key.png)
 
+
+- Now,Log in to Jenkins account 
+- Click on the New Item on the left
+- Give the item name (Job name)
+- Select free style project and create the job
+- now go into that job, click on congigure
+- In general settings select discard old builds and give Max# of builds to keep to 3
+  
+![](Images/step-1.png)
+
+- select GitHub project and give your github repo url (Give HTTP not SSH)
+
+- In source code management select Git option and into Repository URL give SSH url of your repo
+- In credential, click to add and then click to jenkins
+- In the new tab under the kind option select SSH username with private key
+- 
+  ![](Images/key3.png)
+
+- Give name of the private key and then copy the key from terminal by running 'cat Jenkins122' in .ssh folder
+- select 'enter directly' option
+- Paste the key into the key box and click add
+  
+## Setup a webhook:
+- Go to your repo, click on settings, click on webhooks on left side
+- In Payload URL give your Jenkins URL
+  
+![](Images/webook.png)
+
+- Click Add webhook
+- Now, in your webhooks, the webhook thatyou created should be in gray round and not the red round. Which means the Jenkins URL you entered is true
+- It will turn green tick after you commit anything from local host
+
+![](Images/webhook2.png)
+
+- Now, your local host, Gitrepo and Jenkins are in constant contact.
+  
