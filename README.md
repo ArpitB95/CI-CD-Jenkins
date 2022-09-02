@@ -100,3 +100,19 @@ It goes one step further than continuous delivery, with this practice, every cha
 
 - Now, your local host, Gitrepo and Jenkins are in constant contact.
   
+
+## Continuous Delivery/Deployment:
+
+- Create EC2
+- Create security group - allow Jenkins ip to shh in as well any other rules required
+- Create a 3rd job in jenkins: get the code from main branch  and copy (SCP) to the EC2
+- Run the script to install node with any other required dependencies
+- The 3rd job must only be triggered if job was successful
+- First iteration run npm install & npm start manually (delivery)
+- 4th job launch the app - if 3rd job was successful
+- pm2 kill all - create 5th job to create DB_HOST=dp_ip
+- npm start
+
+
+
+
