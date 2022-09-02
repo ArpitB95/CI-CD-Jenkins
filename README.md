@@ -23,6 +23,26 @@ It goes one step further than continuous delivery, with this practice, every cha
 
 
 
+- I createda new repo on github
+- Then I ssh into the repo and pushed my app folder
+
+- Then I established connection between github and jenkins using the public and private key.
+- So I created the keys first and I copied and pasted the public key into the git repo
+- And provided private key to the jenkins and then I tested this connection by creating a job in jenkins
+
+- After that I set up webhook in my github repo
+- So webhook listens to the local host and github, so any changes occurs, it gets triggered and tells jenkins 
+
+
+
+- Usually, everyone works on the different branches and then commit their code from the local host
+ to git hub.
+- So, I created a job in Jenkins that runs the tests on any commit from the local host
+  and if all the tests pass then it automatically merges the code to the main branch.
+
+- This avoids the corrupted code to merge to the main branch.
+
+
 ## Steps for setting up environment:
 - Create a new Repo on github
 - initialise that repo on local host by ssh
@@ -101,7 +121,13 @@ It goes one step further than continuous delivery, with this practice, every cha
 - Now, your local host, Gitrepo and Jenkins are in constant contact.
   
 
+
+
+
+
 ## Continuous Delivery/Deployment:
+- In this iteration, we'll deploy code into AWS :
+  
 
 - Create EC2
 - Create security group - allow Jenkins ip to shh in as well any other rules required
@@ -115,4 +141,8 @@ It goes one step further than continuous delivery, with this practice, every cha
 
 
 
+## Prerequisites:
+- Need key (file.pem) on Jenkins to allow connection between Jenkins and AWS
+- We need to bypass the key asking permission when we manually ssh into our instance
+- For that we need to run command in ssh shell to automate that
 
